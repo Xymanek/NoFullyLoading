@@ -7,6 +7,7 @@
     <SteamPublishID>0</SteamPublishID>
     <AssemblyName>NoFullyLoading</AssemblyName>
     <RootNamespace>NoFullyLoading</RootNamespace>
+    <ProjectGuid>{5aebb6dc-3bce-4a66-bc7f-2733684a2616}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Config\" />

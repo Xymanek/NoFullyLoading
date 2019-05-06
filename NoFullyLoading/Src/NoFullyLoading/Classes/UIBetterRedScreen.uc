@@ -7,9 +7,15 @@ var int PrevNumLines;
 
 simulated event PostRenderFor(PlayerController kPC, Canvas kCanvas, vector vCameraPosition, vector vCameraDir)
 {
+	local XComEngine Engine;	
+
 	if (PrevNumLines != RedscreenLines.Length)
 	{
 		CheckForFullyLoading();
+
+		// This is required to prevent the manager from resetting the message
+		Engine = XComEngine(class'Engine'.static.GetEngine());
+		Engine.m_RedScreenManager.m_currentErrors = m_strErrorMsg;
 	}
 
 	if (!bIsRemoved)
@@ -24,11 +30,11 @@ simulated function CheckForFullyLoading ()
 
 	for (Index = RedcreenShowOffset; Index < RedscreenLines.Length; ++Index)
 	{
-		`log("Testing" @ RedscreenLines[Index],, 'NoFullyLoading');
+		`log("Testing:" @ RedscreenLines[Index],, 'NoFullyLoading');
 
-		if (Left(RedscreenLines[Index], FULLY_LOADING_PREFIX_LEN) == FULLY_LOADING_PREFIX)
+		if (RedscreenLines[Index] == "" || Left(RedscreenLines[Index], FULLY_LOADING_PREFIX_LEN) == FULLY_LOADING_PREFIX)
 		{
-			`log("Removing" @ RedscreenLines[Index],, 'NoFullyLoading');
+			`log("Removing:" @ RedscreenLines[Index],, 'NoFullyLoading');
 			
 			RedscreenLines.Remove(Index, 1);
 			Index--;
@@ -40,6 +46,7 @@ simulated function CheckForFullyLoading ()
 	// Check if we got rid of everything to show
 	if (RedcreenShowOffset >= RedscreenLines.Length)
 	{
+		`log("Cleaned redscreen of all messages, so closing it");
 		CloseScreen();
 	}
 

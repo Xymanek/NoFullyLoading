@@ -7,9 +7,12 @@ Project("{5DAE07AF-E217-45C1-8DE7-FF99D6011E8A}") = "NoFullyLoading", "NoFullyLo
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|XCOM 2 = Debug|XCOM 2
 		Default|XCOM 2 = Default|XCOM 2
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AEBB6DC-3BCE-4A66-BC7F-2733684A2616}.Debug|XCOM 2.ActiveCfg = Default|XCOM 2
+		{5AEBB6DC-3BCE-4A66-BC7F-2733684A2616}.Debug|XCOM 2.Build.0 = Default|XCOM 2
 		{5AEBB6DC-3BCE-4A66-BC7F-2733684A2616}.Default|XCOM 2.ActiveCfg = Default|XCOM 2
 		{5AEBB6DC-3BCE-4A66-BC7F-2733684A2616}.Default|XCOM 2.Build.0 = Default|XCOM 2
 	EndGlobalSection
