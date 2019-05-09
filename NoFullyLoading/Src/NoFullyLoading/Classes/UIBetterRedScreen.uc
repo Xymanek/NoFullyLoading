@@ -28,16 +28,31 @@ simulated function CheckForFullyLoading ()
 {
 	local int Index;
 
+	// Check for FullyLoading
 	for (Index = RedcreenShowOffset; Index < RedscreenLines.Length; ++Index)
 	{
 		`log("Testing:" @ RedscreenLines[Index],, 'NoFullyLoading');
 
-		if (RedscreenLines[Index] == "" || Left(RedscreenLines[Index], FULLY_LOADING_PREFIX_LEN) == FULLY_LOADING_PREFIX)
+		if (Left(RedscreenLines[Index], FULLY_LOADING_PREFIX_LEN) == FULLY_LOADING_PREFIX)
 		{
 			`log("Removing:" @ RedscreenLines[Index],, 'NoFullyLoading');
 			
 			RedscreenLines.Remove(Index, 1);
 			Index--;
+		}
+	}
+
+	// Check for empty line(s) at the end
+	for (Index = RedscreenLines.Length - 1; Index > RedcreenShowOffset; Index--)
+	{
+		if (RedscreenLines[Index] == "")
+		{
+			`log("Removing empty line at the end",, 'NoFullyLoading');
+			RedscreenLines.Remove(Index, 1);
+		}
+		else
+		{
+			break;
 		}
 	}
 
