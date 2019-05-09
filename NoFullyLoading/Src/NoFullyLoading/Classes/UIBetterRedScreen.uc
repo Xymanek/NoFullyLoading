@@ -11,7 +11,7 @@ simulated event PostRenderFor(PlayerController kPC, Canvas kCanvas, vector vCame
 
 	if (PrevNumLines != RedscreenLines.Length)
 	{
-		CheckForFullyLoading();
+		ValidateLines();
 
 		// This is required to prevent the manager from resetting the message
 		Engine = XComEngine(class'Engine'.static.GetEngine());
@@ -24,7 +24,7 @@ simulated event PostRenderFor(PlayerController kPC, Canvas kCanvas, vector vCame
 	}
 }
 
-simulated function CheckForFullyLoading ()
+simulated function ValidateLines ()
 {
 	local int Index;
 
