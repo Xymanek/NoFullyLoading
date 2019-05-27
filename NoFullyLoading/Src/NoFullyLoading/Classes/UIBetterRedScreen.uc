@@ -61,7 +61,7 @@ simulated function ValidateLines ()
 	// Check if we got rid of everything to show
 	if (RedcreenShowOffset >= RedscreenLines.Length)
 	{
-		`log("Cleaned redscreen of all messages, so closing it");
+		`log("Cleaned redscreen of all messages, so closing it",, 'NoFullyLoading');
 		CloseScreen();
 	}
 
